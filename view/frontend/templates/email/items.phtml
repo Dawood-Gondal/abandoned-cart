@@ -1,0 +1,45 @@
+<?php
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_AbandonedCart
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+
+$items = $block->getItems()
+?>
+<table class="email-items">
+    <thead>
+        <tr>
+            <th class="item-info" style="text-align: left;">
+                <?= __('Items'); ?>
+            </th>
+            <th class="item-sku" style="text-align: left;">
+                <?= __('Sku'); ?>
+            </th>
+            <th class="item-qty" style="text-align: left;">
+                <?= __('Qty'); ?>
+            </th>
+            <th class="item-price" style="text-align: left;">
+                <?= __('Price'); ?>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if ($items):
+            foreach ($items as $item):
+                if ($item->getParentItem()) {
+                    continue;
+                } ?>
+            <tr>
+                <td><?= $item->getName() ?></td>
+                <td><?= $item->getSku() ?></td>
+                <td><?= $item->getQty() ?></td>
+                <td><?= $item->getPrice() ?></td>
+            </tr>
+        <?php endforeach;
+    endif; ?>
+    </tbody>
+</table>

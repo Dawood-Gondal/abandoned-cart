@@ -1,0 +1,53 @@
+<?php
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_AbandonedCart
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var M2Commerce\AbandonedCart\ViewModel\ExitPopup $viewModel */
+/** @var M2Commerce\AbandonedCart\Helper\Data $helper */
+
+$viewModel = $block->getData('view_model');
+$helper = $this->helper(\M2Commerce\AbandonedCart\Helper\Data::class);
+?>
+
+<div id="abandoned_cart_stick_layer" style="display:none;" class="stick_popup abandoned_cart_email_popup">
+    <div class="stick_close" onclick="jQuery.stick_close();">X</div>
+    <div class="stick_content">
+        <h2>Subscribe For More Offers</h2>
+        <div class="control">
+            <input type="email" name="email" autocomplete="email" id="exit-email"
+                   title="<?= $escaper->escapeHtml(__('Email Address')); ?>"
+                   class="input-text exit-email" placeholder="<?= $escaper->escapeHtml(__('Email Address')) ?>"
+                   data-validate="{required:true, 'validate-email':true}">
+            <div class="message" style="display: none;"></div>
+        </div>
+        <div class="actions">
+            <button class="save action primary">Subscribe</button>
+        </div>
+    </div>
+</div>
+<?php if (!$viewModel->isCartEmpty() && $viewModel->isGuestUser() && $viewModel->isQuoteEmailEmpty()): ?>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "M2Commerce_AbandonedCart/js/stickToMeModel": {}
+            }
+        }
+    </script>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "M2Commerce_AbandonedCart/js/emailCapture":{
+                "type":"exit",
+                "url":"<?= $escaper->escapeHtml($helper->getEmailCaptureUrl()); ?>"
+            }
+        }
+    }
+</script>

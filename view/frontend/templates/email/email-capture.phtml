@@ -1,0 +1,23 @@
+<?php
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_AbandonedCart
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var \M2Commerce\AbandonedCart\Helper\Data $helper */
+$helper = $this->helper(\M2Commerce\AbandonedCart\Helper\Data::class);
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "M2Commerce_AbandonedCart/js/emailCapture":{
+            "type":"checkout",
+            "url":"<?= $escaper->escapeHtml($helper->getEmailCaptureUrl()); ?>"
+        }
+    }
+}
+</script>
