@@ -14,7 +14,7 @@
         </tab>
         <section id="abandoned_cart" translate="label" showInStore="1" showInWebsite="1" showInDefault="1">
             <class>separator-top</class>
-            <label>Abandoned Cart Settings</label>
+            <label>Abandoned Cart</label>
             <tab>commerce_enterprise</tab>
             <resource>M2Commerce_AbandonedCart::abandonedCartConfig</resource>
             <group id="customers" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">

@@ -11,6 +11,10 @@ There are times when customers happen to abandon their carts without any knowled
 5. Configure the schedule of email sending 
 6. Compatible with 2.3.x and 2.4.x versions.
 
+### Configuration
+There are several configuration options for this extension, which can be found at **STORES > Configuration > Commerce Enterprise > Abandoned Cart**.
+
+
 ### Screenshot
 ![comment box closed](Screenshot/email.jpg)
 ![comment box closed](Screenshot/cartpopup.jpg)
